@@ -65,6 +65,7 @@
         android:text="Save"
         android:textColor="@android:color/black"
         android:layout_below="@id/bio_settings"
+        android:background="@drawable/custom_button"
         >
 
     </Button>

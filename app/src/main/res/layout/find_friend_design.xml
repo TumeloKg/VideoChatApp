@@ -54,11 +54,12 @@
             android:layout_marginLeft="79dp"
             android:layout_marginRight="79dp"
             android:padding="5dp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/custom_button"
             android:textColor="@android:color/white"
             android:text="Accept Friend Request"
             android:textAllCaps="false"
             android:textSize="13dp"
+            android:visibility="gone"
             >
 
         </Button>
@@ -80,6 +81,7 @@
             android:text="Decline Friend Request"
             android:textAllCaps="false"
             android:textSize="13dp"
+            android:visibility="gone"
             >
 
         </Button>

@@ -57,7 +57,7 @@
             android:padding="5dp"
             android:drawableTop="@drawable/video_call"
             android:drawableTint="@android:color/white"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/custom_button"
             android:layout_centerHorizontal="true"
             >
 
