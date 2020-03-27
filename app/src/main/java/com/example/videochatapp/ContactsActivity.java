@@ -35,7 +35,8 @@ public class ContactsActivity extends AppCompatActivity
     private DatabaseReference contactsRef, userRef;
     private FirebaseAuth mAuth;
     private String currentUserID;
-    private String userName="", profileImage="" ;
+    private String userName="", profileImage="";
+    private String calledBy="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -107,6 +108,11 @@ public class ContactsActivity extends AppCompatActivity
     {
         super.onStart();
 
+
+        checkForReceivingCall();
+
+        validateUser();
+
         FirebaseRecyclerOptions<Contacts> options
                 = new FirebaseRecyclerOptions.Builder<Contacts>()
                 .setQuery(contactsRef.child(currentUserID), Contacts.class)
@@ -133,6 +139,18 @@ public class ContactsActivity extends AppCompatActivity
                             holder.userNameTxt.setText(userName);
                             Picasso.get().load(profileImage).into(holder.profileImageView);
                         }
+
+                        holder.callBtn.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View view)
+                            {
+                                Intent callingIntent = new Intent(ContactsActivity.this, CallingActivity.class);
+                                callingIntent.putExtra("visit_user_id", listUserId);
+                                startActivity(callingIntent);
+
+                            }
+                        });
                     }
 
                     @Override
@@ -158,6 +176,8 @@ public class ContactsActivity extends AppCompatActivity
         firebaseRecyclerAdapter.startListening();
     }
 
+
+
     public static  class ContactsViewHolder extends  RecyclerView.ViewHolder
     {
 
@@ -177,6 +197,63 @@ public class ContactsActivity extends AppCompatActivity
             profileImageView = itemView.findViewById(R.id.image_contact);
 
         }
+    }
+
+
+    private void validateUser()
+    {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+        reference.child("Users").child(currentUserID).addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                if (!dataSnapshot.exists())
+                {
+                    Intent settingIntent = new Intent(ContactsActivity.this, SettingsActivity.class);
+                    startActivity(settingIntent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+
+            }
+        });
+    }
+
+
+    private void checkForReceivingCall()
+    {
+        userRef.child(currentUserID)
+                .child("Ringing")
+                .addValueEventListener(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot)
+                    {
+                        if (dataSnapshot.hasChild("ringing"))
+                        {
+                            calledBy = dataSnapshot.child("ringing").getValue().toString();
+
+                            Intent callingIntent = new Intent(ContactsActivity.this, CallingActivity.class);
+                            callingIntent.putExtra("visit_user_id", calledBy);
+                            startActivity(callingIntent);
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError)
+                    {
+
+                    }
+                });
+
+
     }
 
 }
