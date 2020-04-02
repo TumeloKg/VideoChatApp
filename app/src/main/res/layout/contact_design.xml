@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,26 +8,29 @@
     android:layout_marginTop="15dp"
     android:layout_marginLeft="25dp"
     android:layout_marginRight="25dp"
-    >
+    app:cardCornerRadius="25dp">
 
-    <RelativeLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/card_view1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/image_contact"
-            android:layout_width="280dp"
-            android:layout_height="220dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:layout_centerHorizontal="true"
             android:src="@drawable/profile_image"
             android:layout_marginTop="15dp"
-
+            app:civ_border_color="#ffffff"
+            app:civ_border_width="2dp"
             >
 
-        </ImageView>
+        </de.hdodenhof.circleimageview.CircleImageView>
 
         <TextView
             android:id="@+id/name_contact"
@@ -47,7 +50,7 @@
 
         <Button
             android:id="@+id/call_btn"
-            android:layout_width="90dp"
+            android:layout_width="200dp"
             android:layout_height="43dp"
             android:layout_below="@+id/name_contact"
             android:layout_marginTop="8dp"

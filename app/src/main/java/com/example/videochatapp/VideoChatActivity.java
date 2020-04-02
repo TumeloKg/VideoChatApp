@@ -31,9 +31,9 @@ public class VideoChatActivity extends AppCompatActivity
         implements  Session.SessionListener,
         PublisherKit.PublisherListener
 {
-    private static  String API_Key = "";
-    private static String SESSION_ID = "";
-    private static  String TOKEN = "";
+    private static  String API_Key = "46642412";
+    private static String SESSION_ID = "2_MX40NjY0MjQxMn5-MTU4NTg1NzY2ODY3MX43ZDY2LzNzME5rZVhQZ0FCVzBURzg0djd-fg";
+    private static  String TOKEN = "T1==cGFydG5lcl9pZD00NjY0MjQxMiZzaWc9YTliMDYwOGJhYzczOTZlZjFkMDUxZWI1ZTExMjEyYWY3ZDdhZWI1NTpzZXNzaW9uX2lkPTJfTVg0ME5qWTBNalF4TW41LU1UVTROVGcxTnpZMk9EWTNNWDQzWkRZMkx6TnpNRTVyWlZoUVowRkNWekJVUnpnMGRqZC1mZyZjcmVhdGVfdGltZT0xNTg1ODU3NzI2Jm5vbmNlPTAuMDc0MzI5NDI5MzY2NzYyOSZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNTg4NDQ5NzI2JmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9";
     private static  final String  LOG_TAG = VideoChatActivity.class.getSimpleName();
     private  static  final int RC_VIDEO_APP_PREM = 124;
 
@@ -127,6 +127,9 @@ public class VideoChatActivity extends AppCompatActivity
 
             }
         });
+
+
+        requestPermissions();
     }
 
     @Override

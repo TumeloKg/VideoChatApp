@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="260dp">
+        android:layout_marginTop="250dp">
     </TextView>
 
 
@@ -43,7 +43,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                >
 
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/ccp"
@@ -56,9 +57,9 @@
                     android:id="@+id/phoneText"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:hint="12345678"
+                    android:hint="Enter Number"
                     android:textColor="@android:color/black"
-                    android:textColorHint="@android:color/darker_gray"
+                    android:textColorHint="@android:color/white"
                     android:inputType="phone"
                     android:singleLine="true"
                     android:backgroundTint="@android:color/white"/>
@@ -92,7 +93,7 @@
         android:layout_centerHorizontal="true"
         android:text="Continue"
         android:textAllCaps="false"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="25dp"
         android:textSize="15dp"
         android:background="@drawable/custom_button"
         android:textColor="@android:color/white"/>
